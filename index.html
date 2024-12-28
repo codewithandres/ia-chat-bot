@@ -27,7 +27,7 @@
                 <!-- chatbot body -->
                 <div class="chat-body">
                     <div class="message bot-message">
-                        <i class="ri-robot-2-line"></i>
+                        <i class="ri-robot-2-line bot-avatar"></i>
                         <div class="message-text">
                             Hey three 👋 <br />
                             How can I help you today.?
@@ -40,29 +40,40 @@
                             elit. Neque explicabo,
                         </div>
                     </div>
+
+                    <div class="message bot-message thinking">
+                        <i class="ri-robot-2-line bot-avatar"></i>
+                        <div class="message-text">
+                            <div class="thinking-indicator">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- chat footer -->
-                <div class="chat-footer">
-                    <form action="#" class="chat-form">
-                        <textarea
-                            class="message-input"
-                            placeholder="Message..."
-                        ></textarea>
+            </div>
+            <div class="chat-footer">
+                <form action="#" class="chat-form">
+                    <textarea
+                        class="message-input"
+                        placeholder="Message..."
+                    ></textarea>
 
-                        <div class="chat-controls">
-                            <button type="button">
-                                <i class="ri-emotion-line"></i>
-                            </button>
-                            <button type="button">
-                                <i class="ri-file-upload-line"></i>
-                            </button>
-                            <button type="submit">
-                                <i class="ri-arrow-right-up-line"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                    <div class="chat-controls">
+                        <button type="button">
+                            <i class="ri-emotion-line"></i>
+                        </button>
+                        <button type="button">
+                            <i class="ri-file-upload-line"></i>
+                        </button>
+                        <button type="submit">
+                            <i class="ri-arrow-right-up-line"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </main>
         <script type="module" src="/src/main.ts"></script>
