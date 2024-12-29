@@ -6,7 +6,6 @@ export const createMessageElement = (
     const div: HTMLElement = document.createElement('div');
     div.classList.add('message', ...className);
     div.innerHTML = content;
-    console.log(className);
 
     return {
         div,

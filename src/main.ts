@@ -1,6 +1,8 @@
 import { MessageContent } from './components/messageText';
+import { generateBotResponse } from './services/getResponseBot';
 import './styles/index.css';
 import { createMessageElement } from './utils/createMessage';
+import { userData } from './utils/userData';
 
 const messageInput = document.querySelector(
     ' .message-input '
@@ -9,11 +11,6 @@ const chatBody = document.querySelector(' .chat-body ') as HTMLDivElement;
 const senMessageButton = document.querySelector(
     ' .send-message '
 ) as HTMLButtonElement;
-
-const userData = {
-    message: '',
-    isLoader: false,
-};
 
 // handle outgoin user messages
 const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent) => {
@@ -42,6 +39,8 @@ const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent) => {
             createMessageElement(messageContent, 'bot-message', 'thinking');
 
         chatBody.appendChild(incominggMessageDiv.div);
+
+        generateBotResponse();
     }, 1000);
 };
 
