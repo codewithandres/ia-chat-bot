@@ -28,13 +28,13 @@ export const generateBotResponse = async (): Promise<string> => {
         if (!data || !data.candidates || data.candidates.length === 0)
             throw new Error('No valid response data found');
 
-        console.log(data);
-
         if (!data) throw new Error('No data found');
         if (!response.ok) throw new Error('Network response was not ok');
 
         // Extract the bot's response text
-        const botResponse = data.candidates[0].content.parts[0].text;
+        const botResponse = data.candidates[0].content.parts[0].text
+            .replace(/\*\*(.*?)\*\*/g, '$1')
+            .trim();
 
         return botResponse;
     } catch (error) {

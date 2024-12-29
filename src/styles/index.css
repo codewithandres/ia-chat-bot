@@ -83,11 +83,14 @@ body {
     overflow-y: auto;
     height: 440px;
     margin-bottom: 82px;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
+    scrollbar-color: #ccccf5 transparent;
 }
 .chat-body .message {
     display: flex;
     gap: 11px;
-    align-items: center;
+    align-items: end;
 
     & .bot-avatar {
         height: 45px;
