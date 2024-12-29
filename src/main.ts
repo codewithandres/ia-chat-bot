@@ -1,5 +1,6 @@
 import { MessageContent } from './components/messageText';
-import { generateBotResponse } from './services/getResponseBot';
+import { renderBotResponse } from './screens/renderBotResponse';
+
 import './styles/index.css';
 import { createMessageElement } from './utils/createMessage';
 import { userData } from './utils/userData';
@@ -28,6 +29,7 @@ const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent) => {
         userData.message;
 
     chatBody.appendChild(outopigMessageDiv.div);
+    chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' });
 
     // simulate bot response white thinking after delay
     setTimeout(() => {
@@ -40,7 +42,8 @@ const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent) => {
 
         chatBody.appendChild(incominggMessageDiv.div);
 
-        generateBotResponse();
+        renderBotResponse(incominggMessageDiv.div);
+        chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' });
     }, 1000);
 };
 
