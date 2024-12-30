@@ -14,7 +14,9 @@ const senMessageButton = document.querySelector(
     ' .send-message '
 ) as HTMLButtonElement;
 const fileInput = document.querySelector(' #file-input ') as HTMLInputElement;
-
+const filePreviwImage = document.querySelector(
+    ' .file-upload-wrapper img'
+) as HTMLImageElement;
 // handle outgoin user messages
 const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent) => {
     event.preventDefault();
@@ -65,6 +67,9 @@ fileInput.addEventListener('change', () => {
     const reader: FileReader = new FileReader();
 
     reader.onload = ({ target }) => {
+        filePreviwImage.src = target?.result as string;
+        filePreviwImage.classList.add('file-uploaded');
+
         const base64String: string = (target?.result as string).split(',')[1];
 
         // store file data in UserData
