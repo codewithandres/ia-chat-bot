@@ -48,9 +48,17 @@
                             <button type="button">
                                 <i class="ri-emotion-line"></i>
                             </button>
-                            <button type="button">
-                                <i class="ri-file-upload-line"></i>
-                            </button>
+                            <div class="file-upload-wrapper">
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                    id="file-input"
+                                    hidden
+                                />
+                                <button type="button" id="file-upload">
+                                    <i class="ri-file-upload-line"></i>
+                                </button>
+                            </div>
                             <button type="submit" class="send-message">
                                 <i class="ri-arrow-right-up-line"></i>
                             </button>

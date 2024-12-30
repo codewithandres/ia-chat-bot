@@ -1,4 +1,8 @@
-export const MessageContent = (isLoader: boolean): string => {
+import type { UserData } from '../interfaces';
+
+export const MessageContent = ({ isLoader }: UserData): string => {
+    isLoader = true;
+
     if (isLoader) {
         return ` 
             <i class="ri-robot-2-line bot-avatar"></i>
@@ -8,6 +12,7 @@ export const MessageContent = (isLoader: boolean): string => {
                 <div class="dot"></div>
                 <div class="dot"></div>
             </div>`;
+    } else {
+        return `<div class="message-text"> </div>`;
     }
-    return `<div class="message-text"> </div>`;
 };

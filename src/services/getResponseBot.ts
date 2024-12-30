@@ -12,9 +12,10 @@ export const generateBotResponse = async (): Promise<string> => {
             contents: [
                 {
                     parts: [
-                        {
-                            text: userData.message,
-                        },
+                        { text: userData.message },
+                        ...(userData.file.data
+                            ? [{ inline_data: userData.file }]
+                            : []),
                     ],
                 },
             ],

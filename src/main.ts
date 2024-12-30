@@ -12,6 +12,7 @@ const chatBody = document.querySelector(' .chat-body ') as HTMLDivElement;
 const senMessageButton = document.querySelector(
     ' .send-message '
 ) as HTMLButtonElement;
+const fileInput = document.querySelector(' #file-input ') as HTMLInputElement;
 
 // handle outgoin user messages
 const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent) => {
@@ -20,7 +21,7 @@ const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent) => {
     messageInput.value = '';
 
     // crete and display user message
-    const messageContent: string = MessageContent((userData.isLoader = false));
+    const messageContent: string = MessageContent((userData));
 
     const outopigMessageDiv: ReturnType<typeof createMessageElement> =
         createMessageElement(messageContent, 'user-message');
@@ -34,7 +35,7 @@ const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent) => {
     // simulate bot response white thinking after delay
     setTimeout(() => {
         const messageContent: string = MessageContent(
-            (userData.isLoader = true)
+            (userData)
         );
 
         const incominggMessageDiv: ReturnType<typeof createMessageElement> =
@@ -56,6 +57,35 @@ messageInput?.addEventListener('keydown', event => {
     if (event.key === 'Enter' && userMessage) handleOutgoinMessage(event);
 });
 
+// handle file input change
+fileInput.addEventListener('change', () => {
+    const file: File = fileInput.files![0];
+
+    if (!file) return;
+
+    const reader: FileReader = new FileReader();
+
+    reader.onload = ({ target }) => {
+        const base64String: string = (target?.result as string).split(',')[1];
+
+        // store file data in UserData
+        userData.file = {
+            data: base64String,
+            mime_type: file.type,
+        };
+        console.log(userData.file);
+
+        fileInput.value = '';
+    };
+    reader.readAsDataURL(file);
+});
+
 senMessageButton.addEventListener('click', event =>
     handleOutgoinMessage(event)
 );
+
+document
+    .querySelector<HTMLButtonElement>('#file-upload')
+    ?.addEventListener('click', () => {
+        fileInput.click();
+    });
