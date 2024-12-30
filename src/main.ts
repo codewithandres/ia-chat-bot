@@ -15,13 +15,18 @@ const senMessageButton = document.querySelector(
 ) as HTMLButtonElement;
 const fileInput = document.querySelector(' #file-input ') as HTMLInputElement;
 const filePreviwImage = document.querySelector(
-    ' .file-upload-wrapper img'
-) as HTMLImageElement;
+    ' .file-upload-wrapper '
+) as HTMLDivElement;
+const fileCancelUpload = document.querySelector(
+    '#file-cancel'
+) as HTMLButtonElement;
+
 // handle outgoin user messages
 const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent) => {
     event.preventDefault();
     userData.message = messageInput.value.trim();
     messageInput.value = '';
+    filePreviwImage.classList.remove('file-uploaded');
 
     // crete and display user message
     const messageContent: string = MessageContent(userData);
@@ -67,7 +72,9 @@ fileInput.addEventListener('change', () => {
     const reader: FileReader = new FileReader();
 
     reader.onload = ({ target }) => {
-        filePreviwImage.src = target?.result as string;
+        (filePreviwImage.children[1] as HTMLImageElement).src =
+            target?.result as string;
+
         filePreviwImage.classList.add('file-uploaded');
 
         const base64String: string = (target?.result as string).split(',')[1];
@@ -82,7 +89,11 @@ fileInput.addEventListener('change', () => {
     };
     reader.readAsDataURL(file);
 });
-
+fileCancelUpload.addEventListener('click', () => {
+    userData.file = { data: '', mime_type: '' };
+    filePreviwImage.classList.remove('file-uploaded');
+});
+fileCancelUpload;
 senMessageButton.addEventListener('click', event =>
     handleOutgoinMessage(event)
 );

@@ -249,17 +249,25 @@ body {
     height: 35px;
     width: 35px;
     position: relative;
-
-    & img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-        display: none;
-
-        &.file-uploaded {
-            display: block;
-        }
-    }
+}
+.file-upload-wrapper :where(img, button) {
+    position: absolute;
+}
+.file-upload-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.file-upload-wrapper #file-cancel {
+    color: #ff0000;
+    background-color: #ffff;
+}
+.file-upload-wrapper :where(img, #file-cancel),
+.file-upload-wrapper.file-uploaded #file-upload {
+    display: none;
+}
+.file-upload-wrapper.file-uploaded img,
+.file-upload-wrapper.file-uploaded:hover #file-cancel {
+    display: block;
 }
