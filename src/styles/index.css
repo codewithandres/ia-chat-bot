@@ -125,6 +125,12 @@ body {
 .chat-body .bot-message.thinking .message-text {
     padding: 2px 1rem;
 }
+.chat-body .user-message .attachment {
+    width: 50%;
+    aspect-ratio: 16 / 9;
+    margin-top: -7px;
+    border-radius: 0.5rem;
+}
 .chat-body .bot-message .thinking-indicator {
     display: flex;
     gap: 4px;

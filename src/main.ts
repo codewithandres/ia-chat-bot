@@ -1,3 +1,4 @@
+import { ComponetDot } from './components/Dot';
 import { MessageContent } from './components/messageText';
 import { renderBotResponse } from './screens/renderBotResponse';
 
@@ -21,7 +22,7 @@ const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent) => {
     messageInput.value = '';
 
     // crete and display user message
-    const messageContent: string = MessageContent((userData));
+    const messageContent: string = MessageContent(userData);
 
     const outopigMessageDiv: ReturnType<typeof createMessageElement> =
         createMessageElement(messageContent, 'user-message');
@@ -34,9 +35,7 @@ const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent) => {
 
     // simulate bot response white thinking after delay
     setTimeout(() => {
-        const messageContent: string = MessageContent(
-            (userData)
-        );
+        const messageContent: string = ComponetDot();
 
         const incominggMessageDiv: ReturnType<typeof createMessageElement> =
             createMessageElement(messageContent, 'bot-message', 'thinking');
@@ -73,7 +72,6 @@ fileInput.addEventListener('change', () => {
             data: base64String,
             mime_type: file.type,
         };
-        console.log(userData.file);
 
         fileInput.value = '';
     };
