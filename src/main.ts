@@ -1,9 +1,11 @@
 import { ComponetDot } from './components/Dot';
 import { MessageContent } from './components/messageText';
+import type { EmohinPikerOptionType } from './interfaces';
 import { renderBotResponse } from './screens/renderBotResponse';
 
 import './styles/index.css';
 import { createMessageElement } from './utils/createMessage';
+import { EmohinPikerOption } from './utils/emjojinPiker';
 import { userData } from './utils/userData';
 
 const messageInput = document.querySelector(
@@ -99,22 +101,8 @@ senMessageButton.addEventListener('click', event =>
     handleOutgoinMessage(event)
 );
 
-type EmojinMArtType = EmojiMart.Emoji;
-
-const picker = new EmojiMart.Picker({
-    theme: 'light',
-    skinTonePosition: 'none',
-    previewPosition: 'none',
-    onEmojiSelect: (emoji: EmojinMArtType) => {
-        messageInput.value += emoji.native;
-        messageInput.focus();
-    },
-    onClickOutside: ({ target }: MouseEvent) => {
-        (target as HTMLElement).closest('#emoji-mart')?.id === 'emoji-mart'
-            ? document.body.classList.toggle('show-emoji-picker')
-            : document.body.classList.remove('show-emoji-picker');
-    },
-});
+const pickerOptions: EmohinPikerOptionType = EmohinPikerOption(messageInput);
+const picker = new EmojiMart.Picker(pickerOptions);
 
 document.querySelector<HTMLDivElement>('.chat-form')?.appendChild(picker);
 
