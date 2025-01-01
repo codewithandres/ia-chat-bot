@@ -239,12 +239,13 @@ body.show-chatBot .chat-bot-toogle i:last-child {
 .chat-form .message-input {
     border: none;
     outline: none;
-    height: 47px;
+    /* height: 47px; */
     width: 100%;
     font-size: 1rem;
     padding: 10px 0 14px 18px;
     border-radius: inherit;
     resize: none;
+    field-sizing: content;
 }
 .chat-form .message-input:valid ~ .chat-controls .send-message {
     display: block;
@@ -323,4 +324,31 @@ em-emoji-picker {
 
 body.show-emoji-picker em-emoji-picker {
     visibility: visible;
+}
+
+@media screen and (max-width: 520px) {
+    .chat-bot-toogle {
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .chatbot-popup {
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+    }
+    .chatbot-popup .chat-header {
+        padding: 12px 15px;
+    }
+    .chat-body {
+        height: calc(90% - 55px);
+        padding: 25px 12px;
+    }
+    .chat-footer {
+        padding: 10px 15px 15px;
+    }
+    .file-upload-wrapper.file-upload #file-cancel {
+        opacity: 0;
+    }
 }
