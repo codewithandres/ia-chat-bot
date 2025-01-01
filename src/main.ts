@@ -22,7 +22,7 @@ const fileCancelUpload = document.querySelector(
 ) as HTMLButtonElement;
 
 // handle outgoin user messages
-const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent) => {
+const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent): void => {
     event.preventDefault();
     userData.message = messageInput.value.trim();
     messageInput.value = '';
@@ -89,14 +89,34 @@ fileInput.addEventListener('change', () => {
     };
     reader.readAsDataURL(file);
 });
+
 fileCancelUpload.addEventListener('click', () => {
     userData.file = { data: '', mime_type: '' };
     filePreviwImage.classList.remove('file-uploaded');
 });
-fileCancelUpload;
+
 senMessageButton.addEventListener('click', event =>
     handleOutgoinMessage(event)
 );
+
+type EmojinMArtType = EmojiMart.Emoji;
+
+const picker = new EmojiMart.Picker({
+    theme: 'light',
+    skinTonePosition: 'none',
+    previewPosition: 'none',
+    onEmojiSelect: (emoji: EmojinMArtType) => {
+        messageInput.value += emoji.native;
+        messageInput.focus();
+    },
+    onClickOutside: ({ target }: MouseEvent) => {
+        (target as HTMLElement).closest('#emoji-mart')?.id === 'emoji-mart'
+            ? document.body.classList.toggle('show-emoji-picker')
+            : document.body.classList.remove('show-emoji-picker');
+    },
+});
+
+document.querySelector<HTMLDivElement>('.chat-form')?.appendChild(picker);
 
 document
     .querySelector<HTMLButtonElement>('#file-upload')
