@@ -125,4 +125,5 @@ chatBotToggle.addEventListener('click', () =>
 );
 
 chatBotClose.addEventListener('click', () =>
-    document.body.classList.remove('show-chatBot'));
+    document.body.classList.remove('show-chatBot')
+);
