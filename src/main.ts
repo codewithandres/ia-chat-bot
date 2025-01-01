@@ -23,6 +23,14 @@ const fileCancelUpload = document.querySelector(
     '#file-cancel'
 ) as HTMLButtonElement;
 
+const chatBotToggle = document.querySelector(
+    '.chat-bot-toogle'
+) as HTMLButtonElement;
+
+const chatBotClose = document.querySelector(
+    '.button-close'
+) as HTMLButtonElement;
+
 // handle outgoin user messages
 const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent): void => {
     event.preventDefault();
@@ -111,3 +119,10 @@ document
     ?.addEventListener('click', () => {
         fileInput.click();
     });
+
+chatBotToggle.addEventListener('click', () =>
+    document.body.classList.toggle('show-chatBot')
+);
+
+chatBotClose.addEventListener('click', () =>
+    document.body.classList.remove('show-chatBot'));
