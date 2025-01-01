@@ -1,6 +1,6 @@
 import { ComponetDot } from './components/Dot';
 import { MessageContent } from './components/messageText';
-import type { EmohinPikerOptionType } from './interfaces';
+import type { EmojinPikerOptionType } from './interfaces';
 import { renderBotResponse } from './screens/renderBotResponse';
 
 import './styles/index.css';
@@ -101,7 +101,7 @@ senMessageButton.addEventListener('click', event =>
     handleOutgoinMessage(event)
 );
 
-const pickerOptions: EmohinPikerOptionType = EmohinPikerOption(messageInput);
+const pickerOptions: EmojinPikerOptionType = EmohinPikerOption(messageInput);
 const picker = new EmojiMart.Picker(pickerOptions);
 
 document.querySelector<HTMLDivElement>('.chat-form')?.appendChild(picker);
