@@ -5,7 +5,7 @@ import { renderBotResponse } from './screens/renderBotResponse';
 
 import './styles/index.css';
 import { createMessageElement } from './utils/createMessage';
-import { EmohinPikerOption } from './utils/emjojinPiker';
+import { EmojinPikerOption } from './utils/emjojinPiker';
 import { userData } from './utils/userData';
 
 const messageInput = document.querySelector(
@@ -101,7 +101,7 @@ senMessageButton.addEventListener('click', event =>
     handleOutgoinMessage(event)
 );
 
-const pickerOptions: EmojinPikerOptionType = EmohinPikerOption(messageInput);
+const pickerOptions: EmojinPikerOptionType = EmojinPikerOption(messageInput);
 const picker = new EmojiMart.Picker(pickerOptions);
 
 document.querySelector<HTMLDivElement>('.chat-form')?.appendChild(picker);
