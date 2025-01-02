@@ -1,19 +1,10 @@
 // Import required types and utilities
+import { chatHistory } from '../constants';
 import type { ApiResponse } from '../interfaces/ApiResponse';
 import { formatBotResponse } from '../utils/formatBotResponse';
 import { userData } from '../utils/userData';
 import { API_URL } from './api';
 
-// Define interface for chat message structure
-interface ChatMessage {
-    role: string; // Role can be 'user' or 'model'
-    parts: Array<{ text?: string; inline_data?: any }>; // Message content with optional text and data
-}
-
-// Initialize empty array to store chat history
-const chatHistory = new Set();
-
-// Main function to generate bot response
 export const generateBotResponse = async (): Promise<string> => {
     // Add user message to chat history
     chatHistory.add({
@@ -23,7 +14,6 @@ export const generateBotResponse = async (): Promise<string> => {
             ...(userData.file.data ? [{ inline_data: userData.file }] : []), // Add file data if it exists
         ],
     });
-    console.log(...chatHistory.values());
 
     // Configure HTTP request options
     const resquestOption: RequestInit = {
@@ -49,7 +39,6 @@ export const generateBotResponse = async (): Promise<string> => {
         if (!response.ok) throw new Error('Network response was not ok');
 
         // Extract and format the bot's response text
-        // Removes markdown bold syntax and trims whitespace
         const botResponse = formatBotResponse(
             data.candidates[0].content.parts[0].text
         );
@@ -59,9 +48,6 @@ export const generateBotResponse = async (): Promise<string> => {
             role: 'model',
             parts: [{ text: botResponse }],
         });
-
-        // Log updated chat history
-        console.log(chatHistory);
 
         // Return the bot's response
         return botResponse;
