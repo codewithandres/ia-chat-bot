@@ -4,7 +4,7 @@ export const createMessageElement = (
     ...className: string[]
 ) => {
     const div: HTMLElement = document.createElement('div');
-    div.classList.add('message', ...className);
+    div.classList.add('message', 'animate__animated', ...className);
     div.innerHTML = content;
 
     return {
