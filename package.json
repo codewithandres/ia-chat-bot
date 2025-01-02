@@ -11,5 +11,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "animate.css": "^4.1.1"
+  }
 }
