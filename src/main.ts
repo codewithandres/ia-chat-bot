@@ -144,9 +144,13 @@ document
     });
 
 // Toggle chat bot visibility
-chatBotToggle.addEventListener('click', () => {
-    document.body.classList.toggle('show-chatBot');
-});
+chatBotToggle.addEventListener(
+    'click',
+    () => {
+        document.body.classList.toggle('show-chatBot');
+    },
+    { passive: true, capture: true }
+);
 
 // Close chat bot
 chatBotClose.addEventListener('click', () =>
