@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
 :root {
     --color-white: hwb(0 100% 0%);
+    --animate-duration: 0.4s;
 }
 * {
     margin: 0;
@@ -21,6 +22,7 @@ body {
 body.show-chatBot .chatbot-popup {
     pointer-events: auto;
     opacity: 1;
+    animation: scale-up-br 200ms;
 }
 body.show-chatBot .chat-bot-toogle {
     transform: rotate(90deg);

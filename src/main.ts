@@ -26,17 +26,13 @@ const fileInput = document.querySelector(' #file-input ') as HTMLInputElement; /
 const filePreviwImage = document.querySelector(
     ' .file-upload-wrapper '
 ) as HTMLDivElement; // Container for file preview
-const fileCancelUpload = document.querySelector(
-    '#file-cancel'
-) as HTMLButtonElement; // Button to cancel file upload
+const fileCancelUpload = document.querySelector('#file-cancel') as HTMLButtonElement; // Button to cancel file upload
 
 // Chat bot toggle controls
 const chatBotToggle = document.querySelector(
     '.chat-bot-toogle'
 ) as HTMLButtonElement; // Button to show/hide chat
-const chatBotClose = document.querySelector(
-    '.button-close'
-) as HTMLButtonElement; // Button to close chat
+const chatBotClose = document.querySelector('.button-close') as HTMLButtonElement; // Button to close chat
 
 // Main function to handle sending messages
 const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent): void => {
@@ -50,11 +46,7 @@ const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent): void => {
 
     // Create a new message element for the user's message
     const outopigMessageDiv: ReturnType<typeof createMessageElement> =
-        createMessageElement(
-            messageContent,
-            'user-message',
-            'animate__fadeInUp'
-        );
+        createMessageElement(messageContent, 'user-message', 'animate__bounceIn');
 
     // Set the message text content
     outopigMessageDiv.div.querySelector(' .message-text ')!.textContent =
@@ -81,9 +73,7 @@ const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent): void => {
 
 // Event listener for Enter key to send message
 messageInput?.addEventListener('keydown', event => {
-    const userMessage: string = (
-        event.target as HTMLTextAreaElement
-    ).value.trim();
+    const userMessage: string = (event.target as HTMLTextAreaElement).value.trim();
 
     if (event.key === 'Enter' && userMessage) handleOutgoinMessage(event);
 });
@@ -125,9 +115,7 @@ fileCancelUpload.addEventListener('click', () => {
 });
 
 // Add click handler for send button
-senMessageButton.addEventListener('click', event =>
-    handleOutgoinMessage(event)
-);
+senMessageButton.addEventListener('click', event => handleOutgoinMessage(event));
 
 // Initialize emoji picker
 const pickerOptions: EmojinPikerOptionType = EmojinPikerOption(messageInput);
@@ -144,13 +132,9 @@ document
     });
 
 // Toggle chat bot visibility
-chatBotToggle.addEventListener(
-    'click',
-    () => {
-        document.body.classList.toggle('show-chatBot');
-    },
-    { passive: true, capture: true }
-);
+chatBotToggle.addEventListener('click', () => {
+    document.body.classList.toggle('show-chatBot');
+});
 
 // Close chat bot
 chatBotClose.addEventListener('click', () =>

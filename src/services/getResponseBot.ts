@@ -22,7 +22,7 @@ export const generateBotResponse = async (): Promise<string> => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            contents: [...chatHistory.values()], // Send entire chat history with request
+            contents: [Array.from(chatHistory.values())], // Send entire chat history with request
         }),
     };
 
@@ -42,6 +42,7 @@ export const generateBotResponse = async (): Promise<string> => {
         const botResponse = formatBotResponse(
             data.candidates[0].content.parts[0].text
         );
+        console.log(botResponse);
 
         // Add bot response to chat history
         chatHistory.add({
