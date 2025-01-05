@@ -50,10 +50,13 @@ const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent): void => {
             'user-message',
             'animate__bounceInRight'
         );
+    const setMessageConiner =
+        outopigMessageDiv.div.querySelector<HTMLDivElement>(' .message-text ');
+
+    if (!setMessageConiner) return;
 
     // Set the message text content
-    outopigMessageDiv.div.querySelector(' .message-text ')!.textContent =
-        userData.message;
+    setMessageConiner.textContent = userData.message;
 
     // Add message to chat and scroll to bottom
     chatBody.appendChild(outopigMessageDiv.div);
@@ -66,6 +69,13 @@ const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent): void => {
         // Create message element for bot response
         const incominggMessageDiv: ReturnType<typeof createMessageElement> =
             createMessageElement(messageContent, 'bot-message', 'thinking');
+
+        incominggMessageDiv.div.classList.add(
+            'animate__bounceInLeft',
+            'animate__delay-1s'
+        );
+
+        incominggMessageDiv.div.style.whiteSpace = 'pre-wrap';
 
         chatBody.appendChild(incominggMessageDiv.div);
 
