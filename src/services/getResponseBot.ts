@@ -6,6 +6,9 @@ import { userData } from '../utils/userData';
 import { API_URL } from './api';
 
 export const generateBotResponse = async (): Promise<string> => {
+    const controller = new AbortController();
+    const signal = controller.signal;
+
     // Add user message to chat history
     chatHistory.add({
         role: 'user',
@@ -24,6 +27,7 @@ export const generateBotResponse = async (): Promise<string> => {
         body: JSON.stringify({
             contents: [Array.from(chatHistory.values())], // Send entire chat history with request
         }),
+        signal, // Pass the AbortSignal to the request
     };
 
     try {
@@ -42,7 +46,6 @@ export const generateBotResponse = async (): Promise<string> => {
         const botResponse = formatBotResponse(
             data.candidates[0].content.parts[0].text
         );
-        console.log(botResponse);
 
         // Add bot response to chat history
         chatHistory.add({
@@ -51,10 +54,14 @@ export const generateBotResponse = async (): Promise<string> => {
         });
 
         // Return the bot's response
+
+        setTimeout(() => controller.abort(), 2000);
+
         return botResponse;
     } catch (error) {
         // Handle and log any errors
         console.error('Error generating bot response:', error);
+
         throw error;
     }
 };
