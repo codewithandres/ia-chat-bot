@@ -7,7 +7,6 @@ import { renderBotResponse } from './screens/renderBotResponse'; // Function to 
 // Import required styles
 import './styles/index.css'; // Main stylesheet
 import 'animate.css'; // Animation library
-import './styles/animation.css'; // Custom animations
 
 // Import utility functions and data
 import { createMessageElement } from './utils/createMessage'; // Helper to create message elements
@@ -46,7 +45,11 @@ const handleOutgoinMessage = (event: KeyboardEvent | MouseEvent): void => {
 
     // Create a new message element for the user's message
     const outopigMessageDiv: ReturnType<typeof createMessageElement> =
-        createMessageElement(messageContent, 'user-message', 'animate__bounceIn');
+        createMessageElement(
+            messageContent,
+            'user-message',
+            'animate__bounceInRight'
+        );
 
     // Set the message text content
     outopigMessageDiv.div.querySelector(' .message-text ')!.textContent =
