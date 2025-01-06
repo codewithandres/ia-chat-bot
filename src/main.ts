@@ -3,6 +3,7 @@ import { ComponetDot } from './components/Dot'; // Component for displaying typi
 import { MessageContent } from './components/messageText'; // Component for message content
 import type { EmojinPikerOptionType } from './interfaces'; // Type definition for emoji picker options
 import { renderBotResponse } from './screens/renderBotResponse'; // Function to render bot responses
+import { Picker } from 'emoji-mart';
 
 // Import required styles
 import './styles/index.css'; // Main stylesheet
@@ -132,7 +133,7 @@ senMessageButton.addEventListener('click', event => handleOutgoinMessage(event))
 
 // Initialize emoji picker
 const pickerOptions: EmojinPikerOptionType = EmojinPikerOption(messageInput);
-const picker = new EmojiMart.Picker(pickerOptions);
+const picker: any = new Picker(pickerOptions);
 
 // Add emoji picker to chat form
 document.querySelector<HTMLDivElement>('.chat-form')?.appendChild(picker);
