@@ -1,3 +1,5 @@
+import type { Emoji } from "emoji-mart";
+
 export interface UserData {
     message: string;
     isLoader: boolean;
@@ -13,7 +15,7 @@ export interface EmojinPikerOptionType {
     onEmojiSelect: (emoji: EmojinMArtType) => void;
     onClickOutside: ({ target }: MouseEvent) => void;
 }
-export type EmojinMArtType = EmojiMart.Emoji;
+export type EmojinMArtType = Emoji;
 
 export interface ChatMessage {
     role: 'user' | 'model';
