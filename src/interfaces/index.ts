@@ -1,4 +1,4 @@
-import type { Emoji } from "emoji-mart";
+import type { Emoji } from 'emoji-mart';
 
 export interface UserData {
     message: string;
@@ -15,7 +15,9 @@ export interface EmojinPikerOptionType {
     onEmojiSelect: (emoji: EmojinMArtType) => void;
     onClickOutside: ({ target }: MouseEvent) => void;
 }
-export type EmojinMArtType = Emoji;
+export interface EmojinMArtType extends Emoji {
+    native: string;
+}
 
 export interface ChatMessage {
     role: 'user' | 'model';
