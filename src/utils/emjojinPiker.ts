@@ -1,4 +1,4 @@
-import type { EmojinPikerOptionType, EmojinMArtType } from '../interfaces';
+import type { EmojinPikerOptionType } from '../interfaces';
 
 export const EmojinPikerOption = (
     messageInput: HTMLTextAreaElement
@@ -6,7 +6,7 @@ export const EmojinPikerOption = (
     theme: 'light',
     skinTonePosition: 'none',
     previewPosition: 'none',
-    onEmojiSelect: (emoji: EmojinMArtType) => {
+    onEmojiSelect: emoji => {
         messageInput.value += emoji.native;
         messageInput.focus();
     },
