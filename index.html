@@ -1,93 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0" />
-        <title>IA Chatbo .Andrew dev</title>
-        <!-- remix icon  -->
-        <link
-            href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-            rel="stylesheet" />
-    </head>
-    <body>
-        <button class="chat-bot-toogle">
-            <i class="ri-chat-ai-fill"></i>
-            <i class="ri-close-line"></i>
-        </button>
 
-        <main id="app">
-            <div class="chatbot-popup animate__animated">
-                <!-- chatbot header  -->
-                <div class="chat-header">
-                    <div class="header-info">
-                        <i class="ri-robot-2-line chatbot-logo"></i>
-                        <h2 class="logo-text">Chatbot</h2>
-                    </div>
-                    <button class="button-close">
-                        <i class="ri-arrow-down-s-line"></i>
-                    </button>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IA Chatbo .Andrew dev</title>
+    <!-- remix icon  -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <button class="chat-bot-toogle">
+        <i class="ri-chat-ai-fill"></i>
+        <i class="ri-close-line"></i>
+    </button>
+
+    <main id="app">
+        <div class="chatbot-popup animate__animated">
+            <!-- chatbot header  -->
+            <div class="chat-header">
+                <div class="header-info">
+                    <i class="ri-robot-2-line chatbot-logo"></i>
+                    <h2 class="logo-text">Chatbot</h2>
                 </div>
+                <button class="button-close">
+                    <i class="ri-arrow-down-s-line"></i>
+                </button>
+            </div>
 
-                <!-- chatbot body -->
-                <div class="chat-body">
-                    <div class="message bot-message">
-                        <i class="ri-robot-2-line bot-avatar"></i>
-                        <div class="message-text">
-                            Hey three 👋 <br />
-                            How can I help you today.?
-                        </div>
+            <!-- chatbot body -->
+            <div class="chat-body">
+                <div class="message bot-message">
+                    <i class="ri-robot-2-line bot-avatar"></i>
+                    <div class="message-text">
+                        Hola 👋 <br>
+                        ¿Cómo puedo ayudarte hoy?
                     </div>
-                </div>
-
-                <!-- chat footer -->
-                <div class="chat-footer">
-                    <form
-                        action="#"
-                        class="chat-form">
-                        <textarea
-                            class="message-input"
-                            placeholder="Message..."
-                            required></textarea>
-
-                        <div class="chat-controls">
-                            <button
-                                type="button"
-                                id="emoji-mart">
-                                <i class="ri-emotion-line"></i>
-                            </button>
-                            <div class="file-upload-wrapper">
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    id="file-input"
-                                    hidden />
-                                <img src="#" />
-                                <button
-                                    type="button"
-                                    id="file-upload">
-                                    <i class="ri-file-upload-line"></i>
-                                </button>
-                                <button
-                                    type="button"
-                                    id="file-cancel">
-                                    <i class="ri-close-line"></i>
-                                </button>
-                            </div>
-                            <button
-                                type="submit"
-                                class="send-message">
-                                <i class="ri-arrow-right-up-line"></i>
-                            </button>
-                        </div>
-                    </form>
                 </div>
             </div>
-        </main>
 
-        <script
-            type="module"
-            src="/src/main.ts"></script>
-    </body>
+            <!-- chat footer -->
+            <div class="chat-footer">
+                <form action="#" class="chat-form">
+                    <textarea class="message-input" placeholder="Message..." required></textarea>
+
+                    <div class="chat-controls">
+                        <button type="button" id="emoji-mart">
+                            <i class="ri-emotion-line"></i>
+                        </button>
+                        <div class="file-upload-wrapper">
+                            <input type="file" accept="image/*" id="file-input" hidden />
+                            <img src="#" />
+                            <button type="button" id="file-upload">
+                                <i class="ri-file-upload-line"></i>
+                            </button>
+                            <button type="button" id="file-cancel">
+                                <i class="ri-close-line"></i>
+                            </button>
+                        </div>
+                        <button type="submit" class="send-message">
+                            <i class="ri-arrow-right-up-line"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
